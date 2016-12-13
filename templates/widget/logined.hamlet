@@ -1,0 +1,5 @@
+<h1>
+    欢迎您,#{name}
+<form method=post action=@{LoginR} >
+    ^{widget}
+    <input type=submit value="退出" />

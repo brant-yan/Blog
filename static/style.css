@@ -1,0 +1,28 @@
+h1{
+    color: green;
+    font-size:16px;
+}
+
+li.heng {
+    float:left;
+    color: red;
+    margin-left: 25px;
+}
+
+p {margin-left: 20px}
+
+span.welcome{
+    color: blue;
+}
+ul li img{
+    width:200px;
+    height:100px;
+}
+.logo_img{
+    width:75px;
+    height:200px;
+    background-image:url("/static/img/phoenix.jpg");
+    background-position:center center;
+    background-size:contain;
+    background-repeat:no-repeat;
+}

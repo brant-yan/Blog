@@ -1,0 +1,3 @@
+<img src=@{StaticR logo-phoenix} .logo_img>
+<span .welcome>
+    现在时间#{show t}
