@@ -1,0 +1,5 @@
+/static StaticR Static getStatic
+/              HomeR GET POST
+/help          HelpR GET
+/message       MessageR POST
+/login         LoginR POST

@@ -1,0 +1,26 @@
+name:               PicWeb
+version:            0.0.0
+cabal-version:      >= 1.8
+build-type:         Simple
+extra-source-files: routes
+
+executable          PicWeb
+  main-is:          Main.hs
+  other-modules:    Application
+                    Foundation
+
+  ghc-options:      -Wall -fwarn-tabs -O2
+
+  build-depends:  base
+                , yesod-core
+                , shakespeare
+                , blaze-markup
+                , text
+                , yesod-static
+                , yesod-form
+                , hledger-web
+                , unix-time
+                , yesod
+                , cookie
+                , wai
+  ghc-options:    -threaded -O2 -rtsopts -with-rtsopts=-N
