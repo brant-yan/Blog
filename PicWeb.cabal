@@ -23,4 +23,13 @@ executable          PicWeb
                 , yesod
                 , cookie
                 , wai
+                , persistent
+                , persistent-template
+                , persistent-sqlite
+                , resourcet
+                , yesod-persistent
+                , blaze-builder
+                , conduit
+                , wai-extra
+                , monad-logger
   ghc-options:    -threaded -O2 -rtsopts -with-rtsopts=-N

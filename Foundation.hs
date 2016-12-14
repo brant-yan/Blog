@@ -16,15 +16,39 @@ import Yesod.Static
 import Yesod.Form
 import Yesod.Form.Jquery
 
+
+
+
+
+import Database.Persist.Sqlite
+import qualified Database.Persist
+import Yesod.Core
+import Data.Conduit
+import Blaze.ByteString.Builder.Char.Utf8 (fromText)
+import Yesod.Persist
+import Data.Text (Text)
+import Control.Monad.Trans.Resource (runResourceT)
+import Control.Monad.Logger (runStderrLoggingT)
+
+
+
 staticFiles "static"
 
-data App = App{getStatic::Static}
+data App = App{getStatic::Static
+             , appPool   :: ConnectionPool}
 
 
 mkYesodData "App" $(parseRoutesFile "config/routes")
 
 instance Yesod App where
    defaultLayout = defaultDashboard
+
+instance YesodPersist App where
+    type YesodPersistBackend App = SqlBackend
+    runDB action = do
+        App s pool <- getYesod
+        runSqlPool action pool
+
 
 defaultDashboard :: Widget -> Handler Html
 defaultDashboard widget = do
