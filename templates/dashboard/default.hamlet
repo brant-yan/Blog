@@ -1,0 +1,6 @@
+$doctype 5
+<html>
+    <head>
+        <title>缺省模板
+    <body>
+        ^{pageBody pc}

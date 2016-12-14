@@ -1,0 +1,11 @@
+$doctype 5
+<html>
+    <head>
+        <link rel=stylesheet href=@{StaticR style_css}>
+        <title>欢迎来到Brant的Blog空间
+    <body>
+        <div class="mainContext">
+            <div .title>
+                Brant's Blog
+            <div .dashline>
+            ^{pageBody pc}
