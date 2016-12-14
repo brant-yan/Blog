@@ -1,0 +1,6 @@
+/              HomeR GET
+/help/#Int     HelpR GET
+/static StaticR Static getStatic
+/redirect      RedirectR GET
+/renderObject/#Text RenderObjectR GET
+/person        PersonR GET POST

@@ -8,7 +8,6 @@ module Handler.Login where
 
 import Handler.Import
 import Module.LoginM
-import Web.Cookie
 
 import Data.Text as DT
 import Data.Text.Encoding (encodeUtf8)
@@ -41,4 +40,6 @@ loginWidget mt = case mt of
                    $(widgetFile "widget/login")
         Just name -> do
                    (widget, enctype) <- handlerToWidget $ generateFormPost logoutForm
+                   head_img <- return ("/static/img/phoenix.jpg"::Text)
+                   $(widgetFile "widget/userInfo")
                    $(widgetFile "widget/logined")

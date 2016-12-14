@@ -1,9 +1,0 @@
-$doctype 5
-<html>
-    <head>
-        <link rel=stylesheet href=@{StaticR style_css}>
-    <body>
-        <h1>This is my template start
-        ^{pageBody pc}
-        <h1>
-            This is my template end

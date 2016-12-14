@@ -9,6 +9,6 @@ import Handler.Import
 
 getHelpR :: Handler Html
 getHelpR = defaultLayout $ do
-            $(widgetFile "help")
+            $(widgetFile "widget/help")
 
 

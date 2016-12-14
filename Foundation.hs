@@ -23,14 +23,30 @@ data App = App{getStatic::Static}
 
 mkYesodData "App" $(parseRoutesFile "config/routes")
 
-instance Yesod App -- where
---   defaultLayout = myLayout
+instance Yesod App where
+   defaultLayout = defaultDashboard
 
-
-homepageLayout :: Widget -> Handler Html
-homepageLayout widget = do
+defaultDashboard :: Widget -> Handler Html
+defaultDashboard widget = do
     pc <- widgetToPageContent widget
-    giveUrlRenderer $( hamletFile "templates/homepage-layout.hamlet")
+    giveUrlRenderer $( hamletFile "templates/dashboard/default.hamlet")
+
+
+homepageDashboard :: Widget -> Handler Html
+homepageDashboard widget = do
+                    pc <- widgetToPageContent widget
+                    giveUrlRenderer $( hamletFile "templates/dashboard/homepage.hamlet")
+
+leftFrame :: Widget ->  Handler Html
+leftFrame widget = do
+  pc <- widgetToPageContent widget
+  giveUrlRenderer $( hamletFile "templates/frame/left.hamlet")
+
+rightFrame :: Widget ->  Handler Html
+rightFrame widget = do
+  pc <- widgetToPageContent widget
+  giveUrlRenderer $( hamletFile "templates/frame/right.hamlet")
+
 
 
 instance RenderMessage App FormMessage where

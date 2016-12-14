@@ -23,9 +23,20 @@ import Yesod.Core.Handler
 
 data BlogMessage = BlogMessage{ title :: Text
                               , content :: Text
+                              , createTime :: Text
                               } deriving Show
+
 
 blogForm :: Html -> MForm Handler (FormResult BlogMessage, Widget)
 blogForm =  renderDivs $ BlogMessage
                     <$> areq textField "文章标题" Nothing
                     <*> areq textField "文章内容" Nothing
+                    <*> areq textField "创建时间" Nothing
+
+getBlogs :: Int -> [BlogMessage]
+getBlogs _ = [
+                BlogMessage "第十章" "天气预报" "2016-12-12",
+                BlogMessage "第九章" "中国新闻" "2016-12-11",
+                BlogMessage "第八章" "世界新闻" "2016-12-10"
+                ]
+

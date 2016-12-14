@@ -18,4 +18,7 @@ blogWidget :: Widget
 blogWidget = do
         (widget, enctype) <- handlerToWidget $ generateFormPost blogForm
         $(widgetFile "widget/blog")
-
+blogsWidget ::Widget
+blogsWidget = do
+             let blogs = getBlogs 10
+             $(widgetFile "widget/blogs")

@@ -14,7 +14,8 @@ module Handler.Import(
     module Foundation,
     module Data.Text,
     module Settings,
-    module Data.UnixTime
+    module Data.UnixTime,
+    module Web.Cookie
 ) where
 
 
@@ -25,6 +26,7 @@ import Yesod
 import Yesod.Static
 import Yesod.Form
 import Yesod.Form.Jquery
+import Web.Cookie
 
 -- widget import
 import Text.Hamlet (HtmlUrl, hamlet,hamletFile)
