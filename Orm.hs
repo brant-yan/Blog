@@ -8,7 +8,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE ViewPatterns #-}
-module Orm.PersonD where
+module Orm where
 
 import Database.Persist
 import Database.Persist.TH
@@ -22,15 +22,26 @@ import Control.Monad.Trans.Resource
 share [mkPersist sqlSettings, mkMigrate "migrateAll",mkSave "entityDefs"] [persistLowerCase|
     Person
         name String
-        age Int
+        password String
+        lastLoginTime String
+        deriving Show
+    Blog
+        personId    PersonId
+        title String
+        content String
+        createTime  String
         deriving Show
 |]
---main1 :: IO ()
---main1 = runSqlite "dev.sqlite3" $ do
---    runMigration $ migrate entityDefs $ entityDef (Nothing :: Maybe Person)
---    michaelId <- insert $ Person "Michael" 26
---    michael <- get michaelId
---    liftIO $ print michael
+initDatabase :: IO ()
+initDatabase = runSqlite "dev.sqlite3" $ do
+    runMigration $ migrate entityDefs $ entityDef (Nothing :: Maybe Person)
 
 --runDb :: SqlPersist (ResourceT IO) a -> IO a
 --runDb query = runSqlite "dev.sqlite3"  $ query
+
+--insertBlog::PersonId -> Entity Blog -> BlogId
+--insertBlog personId blog= do
+--            people <-  runDB $ selectList [PersonId ==. personId ] [LimitTo 1]
+--            let persons = people::[Entity Person]
+--            blogId <- runDB $ insert $ blog
+--            blogId

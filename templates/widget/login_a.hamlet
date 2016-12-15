@@ -2,8 +2,9 @@
     <form method=post action=@{LoginR} enctype=#{enctype} >
         ^{widget}
         <button>登录
-
+    <!--
     <ul>
         $forall Entity personid person <- persons
             <li>
                 #{personName person} - #{personAge person}
+    -->

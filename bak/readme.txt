@@ -195,3 +195,9 @@ now <- liftIO getCurrentTime
 import Data.UnixTime
 ut <-  liftIO $ getUnixTime
 let t = formatUnixTimeGMT webDateFormat ut
+
+问：如何从数据库中通过ID获取对象
+import Database.Persist.Types (PersistValue(PersistInt64))
+
+getByIntId :: Integral i => i -> Handler (Maybe Person)
+getByIntId i = runDB $ get $ Key $ PersistInt64 (fromIntegral i)

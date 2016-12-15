@@ -1,0 +1,3 @@
+<form method=post action=@{RecordBlogR} enctype=#{enctype} >
+    ^{widget}
+    <button>提交

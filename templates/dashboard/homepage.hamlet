@@ -2,10 +2,25 @@ $doctype 5
 <html>
     <head>
         <link rel=stylesheet href=@{StaticR style_css}>
-        <title>欢迎来到Brant的Blog空间
+        $maybe msg <- mmsg
+            <title>#{msg}
+        $nothing
+            <title>欢迎来到Brant的Blog空间
     <body>
         <div class="mainContext">
             <div .title>
                 Brant's Blog
             <div .dashline>
+            <div .toolbar>
+                <ul>
+                    <li .heng>
+                        <a href="/">首页
+                    <li .heng>
+                        <a href="/register">注册
+                    <li .heng>
+                        <a href="/writeBlog">写文章
+                    <li .heng>
+                        <a href="/help">帮助
+
+            <br />
             ^{pageBody pc}

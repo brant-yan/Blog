@@ -42,8 +42,8 @@ loginForm extra = do
             url <- getCurrentUrl
             flip renderDivs extra $ LoginMessage
                 <$> areq textField "用户名" Nothing
-                <*> areq textField "密码" Nothing
-                <*> areq textField "当前页面" (Just url)
+                <*> areq passwordField "密码" Nothing
+                <*> areq hiddenField "" (Just url)
 
 logoutForm :: Html -> MForm Handler (FormResult LogoutMessage, Widget)
 logoutForm = renderDivs $ pure LogoutMessage

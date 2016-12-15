@@ -1,5 +1,11 @@
-/static StaticR Static getStatic
-/              HomeR GET POST
-/help          HelpR GET
-/message       MessageR POST
-/login         LoginR POST
+/static StaticR     Static getStatic    --静态资源
+/                   HomeR GET POST       --首页
+/help               HelpR GET            --帮助
+/register           RegisterR GET POST   --注册新用户
+/writeBlog          WriteBlogR GET       --编写Blog
+/readBlog/#BlogId       ReadBlogR GET        --阅读Blog
+
+
+/login         LoginR POST          --用户登录
+/recordBlog    RecordBlogR POST     --记录Blog
+

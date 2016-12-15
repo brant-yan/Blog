@@ -1,3 +1,0 @@
-<form method=post action=@{HomeR} enctype=#{enctype} >
-    ^{widget}
-    <button>提交

@@ -1,0 +1,3 @@
+<form method=post action=@{RegisterR} enctype=#{enctype} >
+    ^{widget}
+    <button>注册

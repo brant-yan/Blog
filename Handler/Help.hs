@@ -8,7 +8,8 @@ module Handler.Help where
 import Handler.Import
 
 getHelpR :: Handler Html
-getHelpR = defaultLayout $ do
-            $(widgetFile "widget/help")
+getHelpR = homepageDashboard $ do
+           let content=  $(widgetFile "widget/help_v")
+           $(widgetFile "frame/center")
 
 

@@ -37,5 +37,4 @@ import Data.Text (Text,pack)
 import Settings
 
 import Data.UnixTime
-
-
+import Data.Time (getCurrentTime)

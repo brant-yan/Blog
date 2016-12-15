@@ -9,6 +9,7 @@ import Handler.Import
 
 import Handler.Login
 import Handler.Blog
+import Orm
 
 
 getHomeR :: Handler Html

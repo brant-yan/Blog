@@ -1,4 +1,0 @@
-$forall blog <- blogs
-    <h3>#{title blog}
-    <p> #{content blog}
-    <strong> #{createTime blog}

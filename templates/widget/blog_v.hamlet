@@ -1,0 +1,6 @@
+$forall Entity blogid blog <- bloglist
+    <h2>
+        <a href=@{ReadBlogR blogid}>No.#{toPathPiece blogid}
+    <h3>#{blogTitle blog}
+    <p> #{blogContent blog}
+    <strong> #{blogCreateTime blog}

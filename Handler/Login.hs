@@ -9,6 +9,9 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE ViewPatterns #-}
 
+
+
+
 module Handler.Login where
 
 import Handler.Import
@@ -21,7 +24,7 @@ import Yesod.Core.Handler(toTextUrl)
 import Database.Persist.Sqlite
 import Yesod
 
-import Orm.PersonD
+import Orm
 
 {-
 1.用于提供响应针对/login各种post，get请求的逻辑处理
@@ -30,15 +33,20 @@ import Orm.PersonD
 
 postLoginR :: Handler Html
 postLoginR = do
-            people <-  runDB $ selectList [] [LimitTo 1]
-            let p = people::[Entity Person]
             ((resultLogin , _),_) <- runFormPost loginForm
             ((resultLogout, _),_) <- runFormPost logoutForm
             case (resultLogin,resultLogout) of
                 (FormSuccess message,_) -> do
-                                         let cookie = def { setCookieName = "login-name", setCookieValue = encodeUtf8 $  name message }
-                                         setCookie cookie
-                                         redirect ((currentUrl message)::Text)
+                                         person <- runDB $ selectList  [PersonName ==. (DT.unpack (name message)),
+                                                                        PersonPassword ==. (DT.unpack (password message))] []
+                                         case Prelude.length person of
+                                            0 -> do
+                                                setMessage "用户不存在或者密码错误"
+                                                redirect ((currentUrl message)::Text)
+                                            _ -> do
+                                                 let cookie = def { setCookieName = "login-name", setCookieValue = encodeUtf8 $  name message }
+                                                 setCookie cookie
+                                                 redirect ((currentUrl message)::Text)
                 (_,FormSuccess message) -> do
                                       deleteCookie "login-name" "/"
                                       redirect HomeR
@@ -51,9 +59,9 @@ loginWidget mt = case mt of
                    (widget, enctype) <- handlerToWidget $ generateFormPost loginForm
                    people <- handlerToWidget $ runDB $ selectList [] [LimitTo 1]
                    let persons = people::[Entity Person]
-                   $(widgetFile "widget/login")
+                   $(widgetFile "widget/login_a")
         Just name -> do
                    (widget, enctype) <- handlerToWidget $ generateFormPost logoutForm
                    head_img <- return ("/static/img/phoenix.jpg"::Text)
-                   $(widgetFile "widget/userInfo")
-                   $(widgetFile "widget/logined")
+                   $(widgetFile "widget/userInfo_v")
+                   $(widgetFile "widget/logout_a")

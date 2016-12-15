@@ -18,7 +18,7 @@ import Database.Persist.Sqlite
 import Control.Monad.Trans.Resource (runResourceT)
 import Control.Monad.Logger (runStderrLoggingT)
 
-import Orm.PersonD
+import Orm
 
 --main = do
 --   persons <- (runDb $ selectList [] [LimitTo 10])
@@ -35,6 +35,8 @@ main = runStderrLoggingT $ withSqlitePool "dev.sqlite3" openConnectionCount
         s@(Static settings) <- static "static"
         warp 3000 $ App s pool
 
+main1 :: IO ()
+main1 = initDatabase
 
 --main :: IO ()
 --main = do

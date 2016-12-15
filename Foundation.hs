@@ -29,7 +29,7 @@ import Yesod.Persist
 import Data.Text (Text)
 import Control.Monad.Trans.Resource (runResourceT)
 import Control.Monad.Logger (runStderrLoggingT)
-
+import Orm
 
 
 staticFiles "static"
@@ -59,6 +59,7 @@ defaultDashboard widget = do
 homepageDashboard :: Widget -> Handler Html
 homepageDashboard widget = do
                     pc <- widgetToPageContent widget
+                    mmsg <- getMessage
                     giveUrlRenderer $( hamletFile "templates/dashboard/homepage.hamlet")
 
 leftFrame :: Widget ->  Handler Html

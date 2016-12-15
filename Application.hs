@@ -11,7 +11,8 @@ import Yesod.Core
 import Handler.Home
 import Handler.Help
 import Handler.Login
-import Handler.Message
+import Handler.Register
+import Handler.Blog
 
 
 mkYesodDispatch "App" resourcesApp

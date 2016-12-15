@@ -32,4 +32,5 @@ executable          PicWeb
                 , conduit
                 , wai-extra
                 , monad-logger
+                , time
   ghc-options:    -threaded -O2 -rtsopts -with-rtsopts=-N

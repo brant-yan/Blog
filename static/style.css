@@ -11,7 +11,9 @@ li.heng {
     color: red;
     margin-left: 25px;
 }
-
+.toolbar{
+    margin-top:5px;
+}
 p {margin-left: 20px}
 
 span.welcome{
@@ -69,5 +71,9 @@ ul li img{
 }
 .dashline{
     border-bottom:1px dashed #000000;
-    margin: 5px 30px 50px 30px
+    margin: 5px 30px 5px 30px
 }
+
+input.required{border:#999 1px solid; height:16px; width:120px;}
+label{text-align:right; width:60px; float:left;}
+.required{margin:5px auto;}
