@@ -27,8 +27,23 @@ import Yesod
 import Orm
 
 {-
-1.用于提供响应针对/login各种post，get请求的逻辑处理
-2.提供渲染loginWidget的逻辑
+1.提供渲染loginWidget的逻辑
+-}
+loginWidget :: Maybe Text -> Widget
+loginWidget mt = case mt of
+        Nothing   -> do
+                   (widget, enctype) <- handlerToWidget $ generateFormPost loginForm
+                   people <- handlerToWidget $ runDB $ selectList [] [LimitTo 1]
+                   let persons = people::[Entity Person]
+                   $(widgetFile "widget/login_a")
+        Just name -> do
+                   (widget, enctype) <- handlerToWidget $ generateFormPost logoutForm
+                   head_img <- return ("/static/img/phoenix.jpg"::Text)
+                   $(widgetFile "widget/userInfo_v")
+                   $(widgetFile "widget/logout_a")
+
+{-
+2.用于提供响应针对/login各种post，get请求的逻辑处理
 -}
 
 postLoginR :: Handler Html
@@ -53,15 +68,4 @@ postLoginR = do
                 (_,_) -> redirect HelpR
 
 
-loginWidget :: Maybe Text -> Widget
-loginWidget mt = case mt of
-        Nothing   -> do
-                   (widget, enctype) <- handlerToWidget $ generateFormPost loginForm
-                   people <- handlerToWidget $ runDB $ selectList [] [LimitTo 1]
-                   let persons = people::[Entity Person]
-                   $(widgetFile "widget/login_a")
-        Just name -> do
-                   (widget, enctype) <- handlerToWidget $ generateFormPost logoutForm
-                   head_img <- return ("/static/img/phoenix.jpg"::Text)
-                   $(widgetFile "widget/userInfo_v")
-                   $(widgetFile "widget/logout_a")
+

@@ -14,13 +14,16 @@ import Orm
 
 getHomeR :: Handler Html
 getHomeR = homepageDashboard $ do
-           left <- (handlerToWidget $ leftFrame blogsWidget)
+           left <- (handlerToWidget $ leftFrame content)
            right <- (handlerToWidget $ rightFrame userInfo)
            $(widgetFile "frame/vertical_two")
+
            where userInfo = do
                                maybeName <- lookupCookie "login-name"
                                loginWidget maybeName
-
+                 content = do
+                            blogsWidget
+                            pageWidget 1
 
 postHomeR :: Handler Html
 postHomeR = do

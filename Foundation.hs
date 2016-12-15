@@ -30,6 +30,8 @@ import Data.Text (Text)
 import Control.Monad.Trans.Resource (runResourceT)
 import Control.Monad.Logger (runStderrLoggingT)
 import Orm
+import Settings
+
 
 
 staticFiles "static"
@@ -49,10 +51,15 @@ instance YesodPersist App where
         App s pool <- getYesod
         runSqlPool action pool
 
+toolbarWidget :: Widget
+toolbarWidget = do
+        maybeName <- lookupCookie "login-name"
+        $(widgetFile "widget/toolbar_v")
 
 defaultDashboard :: Widget -> Handler Html
 defaultDashboard widget = do
     pc <- widgetToPageContent widget
+    toolbar <- widgetToPageContent toolbarWidget
     giveUrlRenderer $( hamletFile "templates/dashboard/default.hamlet")
 
 
@@ -60,6 +67,7 @@ homepageDashboard :: Widget -> Handler Html
 homepageDashboard widget = do
                     pc <- widgetToPageContent widget
                     mmsg <- getMessage
+                    toolbar <- widgetToPageContent toolbarWidget
                     giveUrlRenderer $( hamletFile "templates/dashboard/homepage.hamlet")
 
 leftFrame :: Widget ->  Handler Html

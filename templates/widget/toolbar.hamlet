@@ -1,7 +1,0 @@
-<ul>
-   <li>
-        <a href=@{HelpR}>用户帮助
-   <li>
-        <a href=@{HelpR}>用户帮助1
-   <li>
-        <a href=@{HelpR}>用户帮助2

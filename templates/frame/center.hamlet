@@ -1,1 +1,2 @@
-^{content}
+<div .centerContext>
+    ^{content}

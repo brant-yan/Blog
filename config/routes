@@ -3,8 +3,8 @@
 /help               HelpR GET            --帮助
 /register           RegisterR GET POST   --注册新用户
 /writeBlog          WriteBlogR GET       --编写Blog
-/readBlog/#BlogId       ReadBlogR GET        --阅读Blog
-
+/readBlog/#BlogId   ReadBlogR GET        --阅读Blog
+/page/#Int          PageR   GET          --Blog列表
 
 /login         LoginR POST          --用户登录
 /recordBlog    RecordBlogR POST     --记录Blog

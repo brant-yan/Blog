@@ -11,16 +11,7 @@ $doctype 5
             <div .title>
                 Brant's Blog
             <div .dashline>
-            <div .toolbar>
-                <ul>
-                    <li .heng>
-                        <a href="/">首页
-                    <li .heng>
-                        <a href="/register">注册
-                    <li .heng>
-                        <a href="/writeBlog">写文章
-                    <li .heng>
-                        <a href="/help">帮助
+            ^{pageBody toolbar}
 
             <br />
             ^{pageBody pc}

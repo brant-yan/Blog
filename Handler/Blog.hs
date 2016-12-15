@@ -12,7 +12,6 @@ import Data.Text as DT
 import Orm
 
 
-
 {-
 1.提供渲染blogWidget的逻辑
 -}
@@ -28,14 +27,33 @@ blogsWidget = do
              bloglist <- handlerToWidget $ runDB $ selectList [] [LimitTo 3,Desc BlogId]
              $(widgetFile "widget/blogs_v")
 
+
 blogWidget :: BlogId ->  Widget
 blogWidget bid = do
              bloglist <- handlerToWidget $ runDB $ selectList [BlogId ==. bid] []
              $(widgetFile "widget/blog_v")
 
+blogListWidget :: Int ->  Widget
+blogListWidget bindex = do
+             bloglist <- handlerToWidget $ runDB $ selectList [] [LimitTo 3, OffsetBy (bindex * 3),Desc BlogId]
+             $(widgetFile "widget/blog_v")
+
+pageWidget ::Int ->   Widget
+pageWidget pIndex = do
+                 let pagelast = pIndex
+                 let pagenext = pIndex - 2
+                 $(widgetFile "widget/page")
+
+
+
 {-
 2.提供相对于blog的业务页面
 -}
+
+
+
+
+
 getWriteBlogR::Handler Html
 getWriteBlogR = homepageDashboard $ do
              let content=newBlogWidget
@@ -45,6 +63,9 @@ getWriteBlogR = homepageDashboard $ do
 getReadBlogR :: BlogId ->  Handler Html
 getReadBlogR blogId = homepageDashboard $ do
                      let content=blogWidget blogId
+                     [whamlet|
+                        <a href="#" onclick="window.history.back(-1);">后退
+                     |]
                      $(widgetFile "frame/center")
 
 postRecordBlogR::Handler Html
@@ -60,7 +81,7 @@ postRecordBlogR = do
                                 redirect HomeR
                                     where
                                         pid2blog  :: PersonId -> Blog
-                                        pid2blog pid = Blog pid (DT.unpack (title message)) (DT.unpack (content message)) (DT.unpack (createTime message))
+                                        pid2blog pid = Blog pid (DT.unpack (title message)) (DT.unpack $ unTextarea (content message)) (DT.unpack (createTime message))
                 _ -> do
                     setMessage "文章保存失败"
                     redirect HomeR

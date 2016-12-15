@@ -1,0 +1,18 @@
+$maybe name <- maybeName
+    <div .toolbar>
+        <ul>
+            <li .heng>
+                <a href="/">首页
+            <li .heng>
+                <a href="/writeBlog">写文章
+            <li .heng>
+                <a href="/help">帮助
+$nothing
+    <div .toolbar>
+        <ul>
+            <li .heng>
+                <a href="/">首页
+            <li .heng>
+                <a href="/register">注册
+            <li .heng>
+                <a href="/help">帮助

@@ -13,6 +13,6 @@ import Handler.Help
 import Handler.Login
 import Handler.Register
 import Handler.Blog
-
+import Handler.Page
 
 mkYesodDispatch "App" resourcesApp
