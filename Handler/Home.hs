@@ -8,9 +8,9 @@ module Handler.Home where
 import Handler.Import
 
 import Handler.Login
-import Handler.Blog
-import Orm
-
+import Snippet.LoginS
+import Snippet.BlogS
+import Snippet.PageS
 
 getHomeR :: Handler Html
 getHomeR = homepageDashboard $ do
@@ -19,8 +19,8 @@ getHomeR = homepageDashboard $ do
            $(widgetFile "frame/vertical_two")
 
            where userInfo = do
-                               maybeName <- lookupCookie "login-name"
-                               loginWidget maybeName
+                       maybeName <- lookupCookie "login-name"
+                       loginSnippet maybeName
                  content = do
                             blogsWidget
                             pageWidget 1

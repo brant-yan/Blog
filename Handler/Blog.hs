@@ -6,49 +6,12 @@
 
 module Handler.Blog where
 
-import Handler.Import
-import Module.BlogM
 import Data.Text as DT
 import Orm
 
-
-{-
-1.提供渲染blogWidget的逻辑
--}
-
-newBlogWidget :: Widget
-newBlogWidget = do
-        (widget, enctype) <- handlerToWidget $ generateFormPost blogForm
-        $(widgetFile "widget/blog_a_write")
-
-
-blogsWidget :: Widget
-blogsWidget = do
-             bloglist <- handlerToWidget $ runDB $ selectList [] [LimitTo 3,Desc BlogId]
-             $(widgetFile "widget/blogs_v")
-
-
-blogWidget :: BlogId ->  Widget
-blogWidget bid = do
-             bloglist <- handlerToWidget $ runDB $ selectList [BlogId ==. bid] []
-             $(widgetFile "widget/blog_v")
-
-blogListWidget :: Int ->  Widget
-blogListWidget bindex = do
-             bloglist <- handlerToWidget $ runDB $ selectList [] [LimitTo 3, OffsetBy (bindex * 3),Desc BlogId]
-             $(widgetFile "widget/blog_v")
-
-pageWidget ::Int ->   Widget
-pageWidget pIndex = do
-                 let pagelast = pIndex
-                 let pagenext = pIndex - 2
-                 $(widgetFile "widget/page")
-
-
-
-{-
-2.提供相对于blog的业务页面
--}
+import Handler.Import
+import Module.BlogM
+import Snippet.BlogS
 
 
 

@@ -11,22 +11,16 @@
 
 module Handler.Register where
 
-import Handler.Import
-import Module.RegisterM
+
 
 import Data.Text as DT
 import Data.Text.Encoding (encodeUtf8)
 import Yesod.Core.Handler(toTextUrl)
 
-import Database.Persist.Sqlite
-import Yesod
+import Handler.Import
+import Module.RegisterM
+import Snippet.RegisterS
 
-import Orm
-
-{-
-1.用于提供响应针对/login各种post，get请求的逻辑处理
-2.提供渲染loginWidget的逻辑
--}
 
 getRegisterR :: Handler Html
 getRegisterR = homepageDashboard $ do
@@ -55,7 +49,3 @@ postRegisterR = do
                      redirect HomeR
 
 
-registerWidget :: Widget
-registerWidget  = do
-            (widget, enctype) <- handlerToWidget $ generateFormPost registerForm
-            $(widgetFile "widget/register")
