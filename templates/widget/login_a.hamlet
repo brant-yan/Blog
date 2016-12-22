@@ -2,6 +2,7 @@
     <form method=post action=@{LoginR} enctype=#{enctype} >
         ^{widget}
         <button>登录
+    <a href=@{RegisterR}>注册
     <div .dashline>
     <h3>最佳文章排行
     <!--

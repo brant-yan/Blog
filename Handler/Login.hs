@@ -13,7 +13,7 @@ module Handler.Login where
 import Data.Text as DT
 import Data.Text.Encoding (encodeUtf8)
 import Yesod.Core.Handler(toTextUrl)
-
+import Text.Blaze.Html (toHtml)
 
 import Handler.Import
 import Module.LoginM
@@ -35,6 +35,8 @@ postLoginR = do
                                             _ -> do
                                                  let cookie = def { setCookieName = "login-name", setCookieValue = encodeUtf8 $  name message }
                                                  setCookie cookie
+--                                                 let c=(toHtml $ Prelude.head (hobby message))
+--                                                 setMessage c
                                                  redirect ((currentUrl message)::Text)
                 (_,FormSuccess message) -> do
                                       deleteCookie "login-name" "/"

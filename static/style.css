@@ -46,7 +46,7 @@ ul li img{
 }
 .leftContext{
     float: left;
-    width: 750px;
+    width: 700px;
     border-bottom: 1px solid #BDBDBD;
 }
 .leftContextdiv1{
@@ -57,7 +57,7 @@ ul li img{
 }
 .rightContext{
     float: right;
-    width: 328px;
+    width: 358px;
     height:2250px;
     border-left: 1px solid #BDBDBD;
 }
@@ -78,5 +78,9 @@ ul li img{
 }
 
 input.required{border:#999 1px solid; height:16px; width:120px;}
-label{text-align:right; width:100px; float:left;}
+label{text-align:right;
+    width:80px;
+    float:left;
+    margin-right:10px;
+    }
 .required{margin:5px auto;}

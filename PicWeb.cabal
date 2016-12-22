@@ -33,4 +33,5 @@ executable          PicWeb
                 , wai-extra
                 , monad-logger
                 , time
+                , blaze-html
   ghc-options:    -threaded -O2 -rtsopts -with-rtsopts=-N
