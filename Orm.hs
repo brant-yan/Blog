@@ -31,14 +31,14 @@ share [mkPersist sqlSettings, mkMigrate "migrateAll",mkSave "entityDefs"] [persi
         content String
         createTime  String
         deriving Show
-    Evaluade
-        blogId      BlogId
-        level   String
+    Evaluate
+        blogId  BlogId
+        level   Int
         deriving Show
 |]
 initDatabase :: IO ()
 initDatabase = runSqlite "dev.sqlite3" $ do
-    runMigration $ migrate entityDefs $ entityDef (Nothing :: Maybe Evaluade)
+    runMigration $ migrate entityDefs $ entityDef (Nothing :: Maybe Evaluate)
 
 --runDb :: SqlPersist (ResourceT IO) a -> IO a
 --runDb query = runSqlite "dev.sqlite3"  $ query

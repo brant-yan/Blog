@@ -16,7 +16,7 @@ evaluateWidget bid = do
              bloglist <- handlerToWidget $ runDB $ selectList [BlogId ==. bid] []
              $(widgetFile "widget/blog_v")
 
-evaluateLevel :: Widget
-evaluateLevel = do
+evaluateLevelCount :: Widget
+evaluateLevelCount = do
         evaluates <- handlerToWidget $ runDB evaluateLevel1
         $(widgetFile "widget/evaluate_v")

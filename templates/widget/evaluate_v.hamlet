@@ -1,6 +1,4 @@
 <h1> 测试
 $forall (e1,e2) <- evaluates
-    <h1>
-        #{toPathPiece (E.unValue  e1) }
-    <h1>
-        #{E.unValue  e2}
+    <strong>
+        #{toPathPiece (E.unValue  e1) } - #{E.unValue  e2}

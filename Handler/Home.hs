@@ -24,7 +24,7 @@ getHomeR = homepageDashboard $ do
                        loginSnippet maybeName
                  content = do
                             blogsWidget
-                            evaluateLevel
+                            evaluateLevelCount
                             pageWidget 1
 
 postHomeR :: Handler Html
