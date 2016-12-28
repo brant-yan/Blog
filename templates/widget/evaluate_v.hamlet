@@ -1,4 +1,14 @@
-<h1> 测试
-$forall (e1,e2) <- evaluates
-    <strong>
-        #{toPathPiece (E.unValue  e1) } - #{E.unValue  e2}
+<table>
+    <tr>
+        <th>文章编号
+        <th>平均得分
+    $forall (e1,e2) <- evaluates
+        <tr>
+            $maybe e2M <- E.unValue e2
+                <td> #{toPathPiece (E.unValue  e1) }
+                <td> #{e2M}
+            $nothing
+                <td> #{toPathPiece (E.unValue  e1) }
+                <td> 没有得分
+
+

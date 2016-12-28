@@ -3,4 +3,4 @@ $forall Entity blogid blog <-  bloglist
         <a href=@{ReadBlogR blogid}>No.#{toPathPiece blogid}
     <h3>#{blogTitle blog}
     <p> #{blogContent blog}
-    <strong> #{blogCreateTime blog}
+    <strong>创建时间: #{blogCreateTime blog}

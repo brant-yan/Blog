@@ -22,9 +22,9 @@ getHomeR = homepageDashboard $ do
            where userInfo = do
                        maybeName <- lookupCookie "login-name"
                        loginSnippet maybeName
+                       evaluateLevelCount
                  content = do
                             blogsWidget
-                            evaluateLevelCount
                             pageWidget 1
 
 postHomeR :: Handler Html
