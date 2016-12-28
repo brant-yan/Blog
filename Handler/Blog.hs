@@ -44,7 +44,7 @@ postRecordBlogR = do
                                 redirect HomeR
                                     where
                                         pid2blog  :: PersonId -> Blog
-                                        pid2blog pid = Blog pid (DT.unpack (title message)) (DT.unpack $ unTextarea (content message)) (DT.unpack (createTime message))
+                                        pid2blog pid = Blog pid (DT.unpack (title message)) (DT.unpack $ unTextarea (content message)) ( show (createTime message))
                 _ -> do
                     setMessage "文章保存失败"
                     redirect HomeR
