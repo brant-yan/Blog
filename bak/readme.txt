@@ -201,3 +201,7 @@ import Database.Persist.Types (PersistValue(PersistInt64))
 
 getByIntId :: Integral i => i -> Handler (Maybe Person)
 getByIntId i = runDB $ get $ Key $ PersistInt64 (fromIntegral i)
+
+stack solver
+stack --update-config
+stack solver --update-config

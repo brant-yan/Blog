@@ -23,6 +23,6 @@ postRecordEvaluateR bid= do
                                 setMessage "打分保存成功"
                                 redirect HomeR
                 _ -> do
-                    setMessage "打分保存成功"
+                    setMessage "打分保存失败"
                     redirect HomeR
 

@@ -11,6 +11,7 @@ import Handler.Login
 import Snippet.LoginS
 import Snippet.BlogS
 import Snippet.PageS
+import Snippet.EvaluateS
 
 getHomeR :: Handler Html
 getHomeR = homepageDashboard $ do
@@ -23,6 +24,7 @@ getHomeR = homepageDashboard $ do
                        loginSnippet maybeName
                  content = do
                             blogsWidget
+                            evaluateLevel
                             pageWidget 1
 
 postHomeR :: Handler Html
