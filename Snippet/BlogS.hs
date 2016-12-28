@@ -8,6 +8,7 @@ module Snippet.BlogS where
 
 import Handler.Import
 import Module.BlogM
+import Module.EvaluateM
 
 
 
@@ -31,6 +32,9 @@ blogWidget :: BlogId ->  Widget
 blogWidget bid = do
              bloglist <- handlerToWidget $ runDB $ selectList [BlogId ==. bid] []
              $(widgetFile "widget/blog_v")
+             (widget, enctype) <- handlerToWidget $ generateFormPost $ evaluateForm bid
+             let blogId=bid
+             $(widgetFile "widget/evaluate_a_write")
 
 blogListWidget :: Int ->  Widget
 blogListWidget bindex = do

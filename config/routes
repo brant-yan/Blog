@@ -6,6 +6,6 @@
 /readBlog/#BlogId   ReadBlogR GET        --阅读Blog
 /page/#Int          PageR   GET          --Blog列表
 
-/login         LoginR POST          --用户登录
-/recordBlog    RecordBlogR POST     --记录Blog
-
+/login              LoginR POST          --用户登录
+/recordBlog         RecordBlogR POST     --记录Blog
+/recordEvaluate/#BlogId     RecordEvaluateR POST    --记录打分

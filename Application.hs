@@ -14,5 +14,6 @@ import Handler.Login
 import Handler.Register
 import Handler.Blog
 import Handler.Page
+import Handler.Evaluate
 
 mkYesodDispatch "App" resourcesApp
