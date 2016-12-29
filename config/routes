@@ -9,3 +9,4 @@
 /login              LoginR POST          --用户登录
 /recordBlog         RecordBlogR POST     --记录Blog
 /recordEvaluate/#BlogId     RecordEvaluateR POST    --记录打分
+/blog/#BlogId       BlogR   GET          --Json化获取Blog信息

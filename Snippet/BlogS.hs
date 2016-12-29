@@ -41,3 +41,5 @@ blogListWidget bindex = do
              bloglist <- handlerToWidget $ runDB $ selectList [] [LimitTo 3, OffsetBy (bindex * 3),Desc BlogId]
              $(widgetFile "widget/blog_v")
 
+blogById :: BlogId -> HandlerT App IO [Entity Blog]
+blogById bid = runDB $ selectList [BlogId ==. bid] []

@@ -13,6 +13,7 @@ import Handler.Help
 import Handler.Login
 import Handler.Register
 import Handler.Blog
+import Handler.ReadBlog
 import Handler.Page
 import Handler.Evaluate
 
